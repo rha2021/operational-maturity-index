@@ -16,7 +16,7 @@ Client-side operational maturity diagnostic built with React, Vite, and Tailwind
 Create a `.env` file from `.env.example` and set:
 
 ```bash
-VITE_APPS_SCRIPT_URL=https://script.google.com/macros/s/YOUR_DEPLOYMENT_ID/exec
+VITE_APPS_SCRIPT_URL=https://script.google.com/macros/s/AKfycby-qN7HZI2ETHu3I0RsDpU2AVH1PmVG6kpwzschgdR1zhLpY6jRo99hbdPvd5BFp2XI7w/exec
 ```
 
 The app will block report downloads until that endpoint is configured.
