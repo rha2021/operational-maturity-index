@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color: #1c1917;
+    background: #f8f6f1;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    background: #f8f6f1;
+    color: #1c1917;
+    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+}
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm;
+  }
+
+  body {
+    background: white;
+  }
+
+  .report-page {
+    min-height: calc(297mm - 32mm);
+    padding: 0;
+  }
+
+  .report-page-break {
+    break-before: page;
+  }
+}
