@@ -1,110 +1,183 @@
 export const SCORECARD_DIMENSIONS = [
   {
-    key: 'workflow',
-    label: 'Workflow',
+    key: 'operations',
+    label: 'Operations',
     description:
-      'Measures how consistently work moves through the organisation, including intake, handoffs, duplication risk, and visibility.',
+      'Measures whether recurring work arrives clearly, follows repeatable steps, and is tracked through to completion.',
   },
   {
     key: 'documentation',
     label: 'Documentation',
     description:
-      'Measures whether processes are documented, maintained, and usable by others without relying on one person.',
-  },
-  {
-    key: 'reporting',
-    label: 'Reporting',
-    description:
-      'Measures how evidence, data, and outputs are captured, reviewed, and communicated.',
+      'Measures whether core processes are written down, kept current, and usable by others with minimal support.',
   },
   {
     key: 'roles',
-    label: 'Roles & Responsibilities',
+    label: 'Roles and Decisions',
     description:
-      'Measures clarity of ownership, decision authority, accountability, and escalation paths.',
+      'Measures clarity of responsibility, contribution, decision authority, and escalation for recurring work.',
+  },
+  {
+    key: 'reporting',
+    label: 'Evidence and Reporting',
+    description:
+      'Measures how evidence is captured, reports are standardised, and reporting responsibilities are managed.',
+  },
+  {
+    key: 'control',
+    label: 'Control, Access and Change Management',
+    description:
+      'Measures training coverage, system access controls, and how operational changes are recorded and communicated.',
   },
 ]
 
 export const QUESTIONS = [
   {
-    id: 'workflow-intake',
-    dimension: 'workflow',
-    prompt: 'How consistently is incoming work captured through a defined intake process?',
+    id: 'operations-repeatability',
+    dimension: 'operations',
+    prompt: 'Do your most common tasks, projects, or events follow similar steps each time?',
+    helper:
+      'For example: organising an event, onboarding someone new, or responding to enquiries usually happens in a similar way each time.',
   },
   {
-    id: 'workflow-steps',
-    dimension: 'workflow',
-    prompt: 'How clearly are the key stages of work defined from start to finish?',
+    id: 'operations-intake',
+    dimension: 'operations',
+    prompt: 'Does new work usually arrive through clear and consistent channels?',
+    helper:
+      'For example: a shared email, phone number, online form, message system, or a person responsible for receiving requests.',
   },
   {
-    id: 'workflow-visibility',
-    dimension: 'workflow',
-    prompt: 'How visible is current work status across the organisation?',
+    id: 'operations-triggers',
+    dimension: 'operations',
+    prompt: 'People know when work needs to start and what triggers it.',
+    helper:
+      'For example: a schedule, deadline, new request, roster, approval, or regular routine tells people when to begin.',
   },
   {
-    id: 'workflow-duplication',
-    dimension: 'workflow',
-    prompt: 'How effectively do your workflows reduce duplication, rework, or conflicting effort?',
+    id: 'operations-tracking',
+    dimension: 'operations',
+    prompt: 'Regular activities are tracked so they happen on time.',
+    helper:
+      'For example: meetings, renewals, reporting dates, programme sessions, follow-ups, or compliance tasks are scheduled and monitored.',
   },
   {
-    id: 'documentation-processes',
+    id: 'operations-definition-of-done',
+    dimension: 'operations',
+    prompt:
+      'For core work, people agree what "done" looks like and check it before it is considered complete.',
+    helper:
+      'For example: there is a shared understanding of what needs to be delivered, and someone confirms it meets the required standard before closing the task.',
+  },
+  {
+    id: 'documentation-core-processes',
     dimension: 'documentation',
-    prompt: 'How well are critical operating procedures documented in a central location?',
+    prompt: 'Core processes are written down somewhere the team can easily access.',
+    helper:
+      'This could be a shared folder, handbook, online system, intranet, or a simple document everyone knows where to find.',
   },
   {
-    id: 'documentation-maintenance',
+    id: 'documentation-updates',
     dimension: 'documentation',
-    prompt: 'How consistently is documentation reviewed and kept up to date?',
+    prompt: 'Process instructions are kept up to date when things change.',
+    helper:
+      'For example: when a process, rule, tool, or contact changes, the written steps are updated so people are not following outdated information.',
   },
   {
-    id: 'documentation-clarity',
+    id: 'documentation-usability',
     dimension: 'documentation',
-    prompt: 'How usable is your documentation for someone who did not create the process?',
+    prompt: 'A new person could follow the written steps for core tasks with minimal help.',
+    helper:
+      'For example: someone new joining the team could use the instructions to complete the task without needing constant guidance.',
   },
   {
-    id: 'documentation-onboarding',
+    id: 'documentation-policies',
     dimension: 'documentation',
-    prompt: 'How much does onboarding rely on documented instructions rather than verbal handover?',
+    prompt:
+      'There are clear documented policies or procedures for routine tasks, projects, and reporting.',
+    helper:
+      'For example: the organisation has written guidance for how work should be done, managed, recorded, and reported.',
   },
   {
-    id: 'reporting-evidence',
-    dimension: 'reporting',
-    prompt: 'How consistently do teams capture evidence and operational data as work happens?',
+    id: 'documentation-alignment',
+    dimension: 'documentation',
+    prompt: 'The way work is actually done usually matches the documented process.',
+    helper:
+      'For example: staff and volunteers generally follow the written process rather than relying on memory, shortcuts, or informal workarounds.',
   },
   {
-    id: 'reporting-accuracy',
-    dimension: 'reporting',
-    prompt: 'How reliable and decision-ready are the reports produced by the organisation?',
+    id: 'documentation-unofficial-work',
+    dimension: 'documentation',
+    prompt: 'Unrecorded or unofficial ways of doing work are limited and visible.',
+    helper:
+      "For example: the organisation is aware of any workarounds, verbal-only instructions, or 'how we really do it' practices, rather than discovering them when someone leaves.",
   },
   {
-    id: 'reporting-rhythm',
-    dimension: 'reporting',
-    prompt: 'How regular is your reporting cadence for operational performance or delivery?',
-  },
-  {
-    id: 'reporting-communication',
-    dimension: 'reporting',
-    prompt: 'How clearly are outputs and performance insights communicated to stakeholders?',
-  },
-  {
-    id: 'roles-ownership',
+    id: 'roles-responsibility',
     dimension: 'roles',
-    prompt: 'How clearly is ownership assigned for core processes and recurring work?',
+    prompt: 'For recurring work, it is clear who is responsible and who contributes.',
+    helper:
+      'For example: people know who leads the task, who supports it, and who needs to be informed.',
   },
   {
-    id: 'roles-authority',
+    id: 'roles-decision-rights',
     dimension: 'roles',
-    prompt: 'How clearly is decision authority defined across teams or functions?',
+    prompt:
+      'People know what decisions they can make themselves and when they need approval or escalation.',
+    helper:
+      'For example: staff or volunteers understand when they can proceed independently and when they need to involve a manager, board member, or another team.',
   },
   {
-    id: 'roles-accountability',
+    id: 'roles-duplication-risk',
     dimension: 'roles',
-    prompt: 'How consistently are people held accountable for expected outcomes?',
+    prompt:
+      "Work is unlikely to be duplicated, missed, or assumed to be someone else's job.",
+    helper:
+      'For example: tasks are clearly assigned, tracked, or handed over so they do not get lost or done twice.',
   },
   {
-    id: 'roles-escalation',
-    dimension: 'roles',
-    prompt: 'How clearly do people know where to escalate blockers or unresolved decisions?',
+    id: 'reporting-evidence-capture',
+    dimension: 'reporting',
+    prompt:
+      'Evidence of work and outcomes is recorded as activities happen, not rebuilt later.',
+    helper:
+      'For example: attendance, case notes, actions completed, outputs, or results are captured during the work rather than reconstructed at reporting time.',
+  },
+  {
+    id: 'reporting-format',
+    dimension: 'reporting',
+    prompt:
+      'Reports usually follow a consistent format and include the same key information each time.',
+    helper:
+      'For example: reports use templates, standard headings, agreed data fields, or defined measures so leaders, funders, or partners receive consistent information.',
+  },
+  {
+    id: 'reporting-ownership',
+    dimension: 'reporting',
+    prompt:
+      'It is clear who prepares reports, what information is needed, and when reporting is due.',
+    helper:
+      'For example: reporting responsibilities, deadlines, and source information are known and usually met without last-minute chasing.',
+  },
+  {
+    id: 'control-training',
+    dimension: 'control',
+    prompt: 'Staff receive training or induction on the processes they are expected to follow.',
+    helper:
+      'For example: people are shown how to complete key tasks, use templates, follow procedures, and understand any compliance or quality requirements.',
+  },
+  {
+    id: 'control-access',
+    dimension: 'control',
+    prompt: 'Access to systems, files, and tools is controlled, recorded, and reviewed.',
+    helper:
+      'For example: the organisation knows who has access to shared drives, software, reporting tools, finance systems, or client records, and access is removed or updated when roles change.',
+  },
+  {
+    id: 'control-change-management',
+    dimension: 'control',
+    prompt: 'Changes to processes, documents, or systems are logged and communicated.',
+    helper:
+      'For example: when a process, template, policy, or system changes, there is a record of what changed, when it changed, and who needs to know.',
   },
 ]
 

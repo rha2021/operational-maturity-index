@@ -36,6 +36,24 @@ const MATURITY_BADGE_STYLES = {
   Optimised: 'bg-emerald-100 text-emerald-700 ring-1 ring-emerald-200',
 }
 
+const HOW_IT_WORKS_STEPS = [
+  {
+    title: 'Answer the questions',
+    description:
+      'Work through 20 short questions covering operations, documentation, roles, reporting, and controls.',
+  },
+  {
+    title: 'Choose what matches today',
+    description:
+      'Pick the option that best reflects how things really work now, not how they are meant to work.',
+  },
+  {
+    title: 'See where the pressure points are',
+    description:
+      'You will get an overall score, section results, and a clear view of the area most likely to cause friction.',
+  },
+]
+
 function PrintableReport({ results, recommendations, leadForm }) {
   return (
     <div className="hidden print:block">
@@ -259,12 +277,14 @@ function App() {
                 Diagnostic for operational maturity
               </p>
               <h2 className="mt-5 max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight text-stone-900 sm:text-6xl">
-                Measure how your organisation actually runs, not how it thinks it runs.
+                Understand how your organisation actually operates.
               </h2>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-600">
-                Assess workflow discipline, documentation quality, reporting rigour, and
-                role clarity through a 16-question maturity diagnostic designed for
-                consulting conversations and internal planning.
+                This 5-minute diagnostic reveals workflow risks, unclear roles,
+                documentation gaps, and reporting weaknesses.
+              </p>
+              <p className="mt-4 max-w-2xl text-sm leading-6 text-stone-500">
+                No preparation needed. Answer based on how things really work today.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <button
@@ -272,7 +292,7 @@ function App() {
                   onClick={() => setStage(STAGES.howItWorks)}
                   className="rounded-full bg-stone-900 px-7 py-4 text-sm font-semibold text-white transition hover:bg-stone-700"
                 >
-                  Start diagnostic
+                  Start
                 </button>
                 <button
                   type="button"
@@ -290,7 +310,7 @@ function App() {
               <div className="mt-8 grid gap-4">
                 {[
                   'One-question-at-a-time assessment flow',
-                  'Dimension scoring across four operating systems',
+                  'Section scoring across five practical areas',
                   'Weakest-area detection and rule-based recommendations',
                   'Lead capture with downloadable PDF summary',
                 ].map((item) => (
@@ -307,82 +327,125 @@ function App() {
         )}
 
         {stage === STAGES.howItWorks && (
-          <section className="flex flex-1 flex-col justify-center py-14">
-            <div className="max-w-3xl">
-              <p className="text-sm uppercase tracking-[0.35em] text-stone-500">How it works</p>
-              <h2 className="mt-5 text-4xl font-semibold tracking-tight text-stone-900 sm:text-5xl">
-                Four dimensions. Sixteen questions. One maturity score.
-              </h2>
-              <p className="mt-6 text-lg leading-8 text-stone-600">
-                Each question uses a five-point scale from “Not in place” to “Optimised”.
-                Scores roll up into dimension averages, an overall maturity percentage, a
-                maturity tier, and a weakest-dimension flag for the final report.
-              </p>
-            </div>
+          <section className="flex flex-1 flex-col py-8 sm:py-10">
+            <div className="mx-auto w-full max-w-5xl">
+              <div className="max-w-3xl">
+                <p className="text-xs uppercase tracking-[0.32em] text-stone-500">
+                  Before you begin
+                </p>
+                <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
+                  A practical check of how work really runs.
+                </h2>
+                <p className="mt-4 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg">
+                  This assessment helps organisations, teams, community groups, and
+                  service providers spot where everyday work is clear and dependable, and
+                  where it still relies on memory, workarounds, or last-minute effort.
+                </p>
+              </div>
 
-            <div className="mt-12 grid gap-5 lg:grid-cols-2">
-              {SCORECARD_DIMENSIONS.map((dimension) => (
-                <article
-                  key={dimension.key}
-                  className="rounded-[1.75rem] border border-stone-200 bg-white/80 p-6 shadow-sm"
+              <div className="mt-8 grid gap-3 md:grid-cols-3">
+                {HOW_IT_WORKS_STEPS.map((step, index) => (
+                  <article
+                    key={step.title}
+                    className="flex h-full gap-4 rounded-xl border border-stone-200 bg-white/70 p-4"
+                  >
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-stone-300 bg-stone-50 text-sm font-semibold text-stone-700">
+                      {index + 1}
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold text-stone-900">{step.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-stone-600">
+                        {step.description}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              <div className="mt-8 max-w-3xl">
+                <p className="text-xs uppercase tracking-[0.28em] text-stone-500">
+                  What we look at
+                </p>
+                <p className="mt-3 text-sm leading-6 text-stone-600">
+                  The questions are grouped into five sections. Each answer uses a simple
+                  five-point scale, then the tool highlights your overall maturity, section
+                  scores, and the area that most needs attention.
+                </p>
+              </div>
+
+              <div className="mt-5 grid gap-4 lg:grid-cols-2">
+                {SCORECARD_DIMENSIONS.map((dimension) => (
+                  <article
+                    key={dimension.key}
+                    className="flex h-full flex-col rounded-xl border border-stone-200 bg-white/68 p-5"
+                  >
+                    <p className="text-xs uppercase tracking-[0.24em] text-stone-500">
+                      {dimension.label}
+                    </p>
+                    <p className="mt-3 text-sm leading-6 text-stone-600">
+                      {dimension.description}
+                    </p>
+                  </article>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setStage(STAGES.questionnaire)
+                    setQuestionIndex(0)
+                  }}
+                  className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2"
                 >
-                  <p className="text-sm uppercase tracking-[0.28em] text-stone-500">
-                    {dimension.label}
-                  </p>
-                  <p className="mt-4 text-base leading-7 text-stone-600">
-                    {dimension.description}
-                  </p>
-                </article>
-              ))}
-            </div>
-
-            <div className="mt-12 flex flex-wrap gap-4">
-              <button
-                type="button"
-                onClick={() => {
-                  setStage(STAGES.questionnaire)
-                  setQuestionIndex(0)
-                }}
-                className="rounded-full bg-stone-900 px-7 py-4 text-sm font-semibold text-white transition hover:bg-stone-700"
-              >
-                Begin questions
-              </button>
-              <button
-                type="button"
-                onClick={() => setStage(STAGES.intro)}
-                className="rounded-full border border-stone-300 px-7 py-4 text-sm font-semibold text-stone-700 transition hover:border-stone-500 hover:text-stone-900"
-              >
-                Back
-              </button>
+                  Begin questions
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setStage(STAGES.intro)}
+                  className="rounded-full border border-stone-300 px-6 py-3 text-sm font-semibold text-stone-700 transition hover:border-stone-500 hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2"
+                >
+                  Back
+                </button>
+              </div>
             </div>
           </section>
         )}
 
         {stage === STAGES.questionnaire && currentQuestion && (
-          <section className="flex flex-1 flex-col justify-center py-14">
-            <div className="mx-auto w-full max-w-4xl rounded-[2rem] border border-stone-200 bg-white/90 p-8 shadow-xl shadow-stone-200/40 sm:p-10">
-              <div className="flex flex-wrap items-center justify-between gap-4">
-                <div>
-                  <p className="text-sm uppercase tracking-[0.3em] text-stone-500">
+          <section className="flex flex-1 flex-col py-6 sm:py-8">
+            <div className="mx-auto flex w-full max-w-3xl flex-1 flex-col rounded-2xl border border-stone-200 bg-white/88 p-5 shadow-sm sm:p-6">
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <div className="min-w-0 flex-1">
+                  <p className="text-xs uppercase tracking-[0.28em] text-stone-500">
                     {formatDimensionLabel(currentQuestion.dimension)}
                   </p>
-                  <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
+                  <h2 className="mt-3 max-w-2xl text-2xl font-semibold tracking-tight text-stone-900 sm:text-3xl">
                     {currentQuestion.prompt}
                   </h2>
+                  <p className="mt-3 max-w-2xl text-sm leading-6 text-stone-600 sm:text-base">
+                    {currentQuestion.helper}
+                  </p>
                 </div>
-                <p className="rounded-full bg-stone-100 px-4 py-2 text-sm font-medium text-stone-700">
-                  Question {questionIndex + 1} of {QUESTIONS.length}
+                <p className="rounded-full border border-stone-200 bg-stone-50 px-3 py-1.5 text-sm font-medium text-stone-700">
+                  {questionIndex + 1} of {QUESTIONS.length}
                 </p>
               </div>
 
-              <div className="mt-8 h-2 rounded-full bg-stone-100">
-                <div
-                  className="h-2 rounded-full bg-amber-500 transition-all"
-                  style={{ width: `${((questionIndex + 1) / QUESTIONS.length) * 100}%` }}
-                />
+              <div className="mt-5">
+                <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.24em] text-stone-500">
+                  <span>Progress</span>
+                  <span>{Math.round(((questionIndex + 1) / QUESTIONS.length) * 100)}%</span>
+                </div>
+                <div className="mt-2 h-1.5 rounded-full bg-stone-100">
+                  <div
+                    className="h-1.5 rounded-full bg-amber-500 transition-all"
+                    style={{ width: `${((questionIndex + 1) / QUESTIONS.length) * 100}%` }}
+                  />
+                </div>
               </div>
 
-              <div className="mt-10 grid gap-4">
+              <div className="mt-5 flex-1 space-y-2.5">
                 {RESPONSE_OPTIONS.map((option) => {
                   const isSelected = answers[currentQuestion.id]?.score === option.score
 
@@ -390,46 +453,72 @@ function App() {
                     <button
                       key={option.score}
                       type="button"
+                      aria-pressed={isSelected}
                       onClick={() => updateAnswer(currentQuestion, option.score)}
-                      className={`rounded-[1.5rem] border p-5 text-left transition ${
+                      className={`w-full rounded-xl border px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 ${
                         isSelected
-                          ? 'border-stone-900 bg-stone-900 text-white shadow-lg'
-                          : 'border-stone-200 bg-stone-50/80 text-stone-800 hover:border-stone-400 hover:bg-white'
+                          ? 'border-stone-900 bg-stone-900 text-white'
+                          : 'border-stone-200 bg-stone-50/65 text-stone-800 hover:border-stone-400 hover:bg-white'
                       }`}
                     >
-                      <p className="text-sm uppercase tracking-[0.25em] opacity-70">
-                        Score {option.score}
-                      </p>
-                      <h3 className="mt-2 text-xl font-semibold">{option.label}</h3>
-                      <p className="mt-2 text-sm leading-6 opacity-80">{option.meaning}</p>
+                      <div className="flex items-start gap-3">
+                        <div
+                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${
+                            isSelected
+                              ? 'bg-white/12 text-white ring-1 ring-white/15'
+                              : 'bg-white text-stone-700 ring-1 ring-stone-200'
+                          }`}
+                        >
+                          {option.score}
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between gap-3">
+                            <h3 className="text-sm font-semibold sm:text-base">{option.label}</h3>
+                            {isSelected && (
+                              <span className="text-xs uppercase tracking-[0.22em] text-stone-300">
+                                Selected
+                              </span>
+                            )}
+                          </div>
+                          <p
+                            className={`mt-1 text-sm leading-5 ${
+                              isSelected ? 'text-stone-200' : 'text-stone-600'
+                            }`}
+                          >
+                            {option.meaning}
+                          </p>
+                        </div>
+                      </div>
                     </button>
                   )
                 })}
               </div>
 
-              <div className="mt-10 flex flex-wrap justify-between gap-4">
-                <button
-                  type="button"
-                  onClick={() => {
-                    if (questionIndex === 0) {
-                      setStage(STAGES.howItWorks)
-                      return
-                    }
+              <div className="sticky bottom-0 mt-5 border-t border-stone-200 bg-white/95 pt-4 backdrop-blur-sm">
+                <div className="flex flex-wrap justify-between gap-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (questionIndex === 0) {
+                        setStage(STAGES.howItWorks)
+                        return
+                      }
 
-                    setQuestionIndex((current) => current - 1)
-                  }}
-                  className="rounded-full border border-stone-300 px-6 py-3 text-sm font-semibold text-stone-700 transition hover:border-stone-500 hover:text-stone-900"
-                >
-                  Back
-                </button>
-                <button
-                  type="button"
-                  onClick={goToNextQuestion}
-                  disabled={!answers[currentQuestion.id]}
-                  className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-700 disabled:cursor-not-allowed disabled:bg-stone-300"
-                >
-                  {questionIndex === QUESTIONS.length - 1 ? 'See results' : 'Next question'}
-                </button>
+                      setQuestionIndex((current) => current - 1)
+                    }}
+                    className="rounded-full border border-stone-300 px-5 py-2.5 text-sm font-semibold text-stone-700 transition hover:border-stone-500 hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2"
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="button"
+                    onClick={goToNextQuestion}
+                    disabled={!answers[currentQuestion.id]}
+                    className="rounded-full bg-stone-900 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:bg-stone-300"
+                  >
+                    {questionIndex === QUESTIONS.length - 1 ? 'See results' : 'Next question'}
+                  </button>
+                </div>
               </div>
             </div>
           </section>
