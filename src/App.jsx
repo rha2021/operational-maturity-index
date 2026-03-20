@@ -54,6 +54,14 @@ const HOW_IT_WORKS_STEPS = [
   },
 ]
 
+const HERO_INSIGHTS = [
+  'Work that depends too heavily on one person',
+  'Tasks that are missed, duplicated, or delayed',
+  'Outdated or missing process documentation',
+  'Reporting that is rebuilt at the last minute',
+  'Unclear ownership or decision-making',
+]
+
 function PrintableReport({ results, recommendations, leadForm }) {
   return (
     <div className="hidden print:block">
@@ -271,58 +279,61 @@ function App() {
         </header>
 
         {stage === STAGES.intro && (
-          <section className="grid flex-1 items-center gap-12 py-14 lg:grid-cols-[1.25fr_0.95fr]">
+          <section className="grid flex-1 items-center gap-8 py-10 sm:py-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
             <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-stone-500">
-                Diagnostic for operational maturity
+              <p className="text-xs uppercase tracking-[0.35em] text-stone-500">
+                DIAGNOSTIC FOR OPERATIONAL MATURITY
               </p>
-              <h2 className="mt-5 max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight text-stone-900 sm:text-6xl">
-                Understand how your organisation actually operates.
+              <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight text-stone-900 sm:text-5xl">
+                See how work really runs in your organisation.
               </h2>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-600">
-                This 5-minute diagnostic reveals workflow risks, unclear roles,
-                documentation gaps, and reporting weaknesses.
+              <p className="mt-5 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg">
+                This short diagnostic helps you identify where work is clear,
+                repeatable, and well supported, and where it may be relying on
+                memory, manual effort, or individual staff members.
               </p>
               <p className="mt-4 max-w-2xl text-sm leading-6 text-stone-500">
-                No preparation needed. Answer based on how things really work today.
+                Takes around 5 minutes. Answer based on how work happens today.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-8 flex flex-wrap gap-3">
                 <button
                   type="button"
                   onClick={() => setStage(STAGES.howItWorks)}
-                  className="rounded-full bg-stone-900 px-7 py-4 text-sm font-semibold text-white transition hover:bg-stone-700"
+                  className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2"
                 >
-                  Start
+                  Start assessment
                 </button>
                 <button
                   type="button"
                   onClick={() => setStage(STAGES.results)}
                   disabled={!allQuestionsAnswered}
-                  className="rounded-full border border-stone-300 px-7 py-4 text-sm font-semibold text-stone-700 transition hover:border-stone-500 hover:text-stone-900 disabled:cursor-not-allowed disabled:border-stone-200 disabled:text-stone-400"
+                  className="rounded-full border border-stone-300 px-6 py-3 text-sm font-semibold text-stone-700 transition hover:border-stone-500 hover:text-stone-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:border-stone-200 disabled:text-stone-400"
                 >
                   View latest results
                 </button>
               </div>
             </div>
 
-            <div className="rounded-[2rem] bg-stone-900 p-8 text-stone-50 shadow-2xl shadow-amber-950/10">
-              <p className="text-sm uppercase tracking-[0.3em] text-stone-300">What you get</p>
-              <div className="mt-8 grid gap-4">
-                {[
-                  'One-question-at-a-time assessment flow',
-                  'Section scoring across five practical areas',
-                  'Weakest-area detection and rule-based recommendations',
-                  'Lead capture with downloadable PDF summary',
-                ].map((item) => (
-                  <div
+            <aside className="rounded-2xl border border-stone-200/90 bg-white/72 p-6 shadow-sm shadow-stone-200/30 sm:p-7">
+              <p className="text-xs uppercase tracking-[0.28em] text-stone-500">
+                What this helps you spot
+              </p>
+              <p className="mt-4 max-w-md text-sm leading-6 text-stone-600">
+                A quick view of the operational weak points that often stay hidden until
+                work slows down, people leave, or reporting is due.
+              </p>
+              <ul className="mt-5 space-y-3">
+                {HERO_INSIGHTS.map((item) => (
+                  <li
                     key={item}
-                    className="rounded-2xl border border-stone-700 bg-white/5 px-5 py-4"
+                    className="flex items-start gap-3 border-t border-stone-200/80 pt-3 first:border-t-0 first:pt-0"
                   >
-                    <p className="text-base leading-7 text-stone-100">{item}</p>
-                  </div>
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                    <span className="text-sm leading-6 text-stone-700">{item}</span>
+                  </li>
                 ))}
-              </div>
-            </div>
+              </ul>
+            </aside>
           </section>
         )}
 
