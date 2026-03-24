@@ -314,7 +314,7 @@ function App() {
             </div>
 
             <aside className="rounded-2xl border border-stone-200/90 bg-white/72 p-6 shadow-sm shadow-stone-200/30 sm:p-7">
-              <p className="text-xs uppercase tracking-[0.28em] text-stone-500">
+              <p className="text-xs font-bold uppercase tracking-[0.28em] text-black">
                 What this helps you spot
               </p>
               <p className="mt-4 max-w-md text-sm leading-6 text-stone-600">
@@ -328,7 +328,7 @@ function App() {
                     className="flex items-start gap-3 border-t border-stone-200/80 pt-3 first:border-t-0 first:pt-0"
                   >
                     <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
-                    <span className="text-sm leading-6 text-stone-700">{item}</span>
+                    <span className="text-sm leading-6 text-[#555746]">{item}</span>
                   </li>
                 ))}
               </ul>
@@ -346,7 +346,7 @@ function App() {
                 <h2 className="mt-3 text-3xl font-semibold tracking-tight text-stone-900 sm:text-4xl">
                   A practical check of how work really runs.
                 </h2>
-                <p className="mt-4 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg">
+                <p className="mt-4 max-w-2xl text-sm leading-7 text-stone-600 sm:text-base">
                   This assessment helps organisations, teams, community groups, and
                   service providers spot where everyday work is clear and dependable, and
                   where it still relies on memory, workarounds, or last-minute effort.
