@@ -280,20 +280,19 @@ function App() {
 
         {stage === STAGES.intro && (
           <section className="grid flex-1 items-center gap-8 py-10 sm:py-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
-            <div>
+            <div className="intro-copy-sans">
               <p className="text-xs uppercase tracking-[0.35em] text-stone-500">
                 DIAGNOSTIC FOR OPERATIONAL MATURITY
               </p>
-              <h2 className="mt-4 max-w-3xl text-4xl font-semibold leading-[1.08] tracking-tight text-stone-900 sm:text-5xl">
-                See how work really runs in your organisation.
+              <h2 className="intro-copy-heading mt-4 max-w-3xl text-4xl leading-[1.08] tracking-tight text-stone-900 sm:text-5xl">
+                Understand how your organisation actually operates.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg">
-                This short diagnostic helps you identify where work is clear,
-                repeatable, and well supported, and where it may be relying on
-                memory, manual effort, or individual staff members.
+                This 5-minute diagnostic reveals workflow risks, unclear roles,
+                documentation gaps, and reporting weaknesses.
               </p>
               <p className="mt-4 max-w-2xl text-sm leading-6 text-stone-500">
-                Takes around 5 minutes. Answer based on how work happens today.
+                No preparation needed. Answer based on how things really work today.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <button
@@ -301,7 +300,7 @@ function App() {
                   onClick={() => setStage(STAGES.howItWorks)}
                   className="rounded-full bg-stone-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-stone-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2"
                 >
-                  Start assessment
+                  Start
                 </button>
                 <button
                   type="button"
@@ -456,53 +455,54 @@ function App() {
                 </div>
               </div>
 
-              <div className="mt-5 flex-1 space-y-2.5">
-                {RESPONSE_OPTIONS.map((option) => {
-                  const isSelected = answers[currentQuestion.id]?.score === option.score
+              <div className="mt-6 flex-1 rounded-[1.5rem] border border-stone-200 bg-stone-50/75 p-4 sm:p-5">
+                <div className="flex items-center justify-between gap-3 text-xs uppercase tracking-[0.24em] text-stone-500">
+                  <span>Scale</span>
+                  <span>{answers[currentQuestion.id]?.score ?? 'Select 0-4'}</span>
+                </div>
 
-                  return (
-                    <button
-                      key={option.score}
-                      type="button"
-                      aria-pressed={isSelected}
-                      onClick={() => updateAnswer(currentQuestion, option.score)}
-                      className={`w-full rounded-xl border px-4 py-3 text-left transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2 ${
-                        isSelected
-                          ? 'border-stone-900 bg-stone-900 text-white'
-                          : 'border-stone-200 bg-stone-50/65 text-stone-800 hover:border-stone-400 hover:bg-white'
-                      }`}
-                    >
-                      <div className="flex items-start gap-3">
-                        <div
-                          className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-sm font-semibold ${
-                            isSelected
-                              ? 'bg-white/12 text-white ring-1 ring-white/15'
-                              : 'bg-white text-stone-700 ring-1 ring-stone-200'
-                          }`}
+                <div className="relative mt-5 px-2 sm:px-4">
+                  <div className="absolute left-6 right-6 top-5 h-px bg-stone-300 sm:left-8 sm:right-8" />
+                  <div className="relative grid grid-cols-5 gap-2 sm:gap-3">
+                    {RESPONSE_OPTIONS.map((option) => {
+                      const isSelected = answers[currentQuestion.id]?.score === option.score
+
+                      return (
+                        <button
+                          key={option.score}
+                          type="button"
+                          aria-pressed={isSelected}
+                          onClick={() => updateAnswer(currentQuestion, option.score)}
+                          className="group flex flex-col items-center text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-stone-900 focus-visible:ring-offset-2"
                         >
-                          {option.score}
-                        </div>
-                        <div className="min-w-0 flex-1">
-                          <div className="flex items-center justify-between gap-3">
-                            <h3 className="text-sm font-semibold sm:text-base">{option.label}</h3>
-                            {isSelected && (
-                              <span className="text-xs uppercase tracking-[0.22em] text-stone-300">
-                                Selected
-                              </span>
-                            )}
-                          </div>
-                          <p
-                            className={`mt-1 text-sm leading-5 ${
-                              isSelected ? 'text-stone-200' : 'text-stone-600'
+                          <span
+                            className={`relative z-10 flex h-10 w-10 items-center justify-center rounded-full border text-sm font-semibold transition sm:h-12 sm:w-12 ${
+                              isSelected
+                                ? 'border-stone-900 bg-stone-900 text-white shadow-sm'
+                                : 'border-stone-300 bg-white text-stone-700 group-hover:border-stone-500'
+                            }`}
+                          >
+                            {option.score}
+                          </span>
+                          <span
+                            className={`mt-3 text-[11px] font-semibold uppercase tracking-[0.18em] sm:text-xs ${
+                              isSelected ? 'text-stone-900' : 'text-stone-500'
+                            }`}
+                          >
+                            {option.label}
+                          </span>
+                          <span
+                            className={`mt-1 max-w-[9rem] text-xs leading-5 sm:text-sm ${
+                              isSelected ? 'text-stone-700' : 'text-stone-500'
                             }`}
                           >
                             {option.meaning}
-                          </p>
-                        </div>
-                      </div>
-                    </button>
-                  )
-                })}
+                          </span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
               </div>
 
               <div className="sticky bottom-0 mt-5 border-t border-stone-200 bg-white/95 pt-4 backdrop-blur-sm">

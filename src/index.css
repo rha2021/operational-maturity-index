@@ -25,6 +25,17 @@
   input {
     font: inherit;
   }
+
+  .intro-copy-sans {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+  }
+
+  .intro-copy-heading {
+    font-family: "Ivy Presto Display", "IvyPresto Display", Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-weight: 300;
+  }
 }
 
 @media print {
