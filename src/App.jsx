@@ -373,7 +373,7 @@ function App() {
               </div>
 
               <div className="mt-8 max-w-3xl">
-                <p className="text-xs uppercase tracking-[0.28em] text-stone-500">
+                <p className="text-base font-bold uppercase tracking-[0.22em] text-black sm:text-lg">
                   What we look at
                 </p>
                 <p className="mt-3 text-sm leading-6 text-stone-600">
@@ -392,7 +392,7 @@ function App() {
                     <p className="text-xs uppercase tracking-[0.24em] text-stone-500">
                       {dimension.label}
                     </p>
-                    <p className="mt-3 text-sm leading-6 text-stone-600">
+                    <p className="mt-3 text-sm font-bold leading-6 text-black">
                       {dimension.description}
                     </p>
                   </article>
