@@ -376,7 +376,7 @@ function App() {
                 <p className="text-base font-bold uppercase tracking-[0.22em] text-black sm:text-lg">
                   What we look at
                 </p>
-                <p className="mt-3 text-sm leading-6 text-stone-600">
+                <p className="mt-3 text-sm font-bold leading-6 text-black">
                   The questions are grouped into five sections. Each answer uses a simple
                   five-point scale, then the tool highlights your overall maturity, section
                   scores, and the area that most needs attention.
@@ -392,7 +392,7 @@ function App() {
                     <p className="text-xs uppercase tracking-[0.24em] text-stone-500">
                       {dimension.label}
                     </p>
-                    <p className="mt-3 text-sm font-bold leading-6 text-black">
+                    <p className="mt-3 text-sm leading-6 text-stone-600">
                       {dimension.description}
                     </p>
                   </article>
