@@ -327,7 +327,7 @@ function App() {
                     key={item}
                     className="flex items-start gap-3 border-t border-stone-200/80 pt-3 first:border-t-0 first:pt-0"
                   >
-                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-amber-500" />
+                    <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-[#555746]" />
                     <span className="text-sm leading-6 text-[#555746]">{item}</span>
                   </li>
                 ))}
