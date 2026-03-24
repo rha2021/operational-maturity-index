@@ -280,11 +280,11 @@ function App() {
 
         {stage === STAGES.intro && (
           <section className="grid flex-1 items-center gap-8 py-10 sm:py-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-10">
-            <div className="intro-copy-sans">
+            <div>
               <p className="text-xs uppercase tracking-[0.35em] text-stone-500">
                 DIAGNOSTIC FOR OPERATIONAL MATURITY
               </p>
-              <h2 className="intro-copy-heading mt-4 max-w-3xl text-4xl leading-[1.08] tracking-tight text-stone-900 sm:text-5xl">
+              <h2 className="mt-4 max-w-3xl text-4xl leading-[1.08] tracking-tight text-stone-900 sm:text-5xl">
                 Understand how your organisation actually operates.
               </h2>
               <p className="mt-5 max-w-2xl text-base leading-7 text-stone-600 sm:text-lg">
